@@ -7,7 +7,8 @@ class main{
     StringBuilder d=new StringBuilder();
     for(char ch:str.toCharArray()){
       if(Character.isLowerCase(ch)){
-    break;}d.append(ch);}
+    break;}d.append(ch);
+    }
   System.out.print(d.toString());}
 }
 
