@@ -396,25 +396,7 @@ class sll{
       while(temp.next!=null){
     temp=temp.next;}temp.next=newnode;}
   }
-  /*public int count(){
-    Node temp=head;
-    int c=0;
-    while(temp!=null){
-      c++;
-      temp=temp.next;
-    }
-    return c;
-  }
-  public void find(int o){
-    Node temp=head;
-    int r=count()-o;
-    int i=0;
-    while(i<r-1){
-      temp=temp.next;
-      i++;
-    }
-    System.out.print(temp.data);
-  }*/
+  
   public void rev(int p){
     Node cur=head;
     Node prev=null;
