@@ -1,5 +1,4 @@
 // 1.Scan a string and print all the characters until it meets lowercase character.
-
 import java.util.*;
 class main{
   public static void main(String[] args){
