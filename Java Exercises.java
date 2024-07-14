@@ -1,4 +1,5 @@
-1.Scan a string and print all the characters until it meets lowercase character.
+// 1.Scan a string and print all the characters until it meets lowercase character.
+
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -14,7 +15,7 @@ class main{
 
 
 
-2.Given two strings, write a code to compare two strings to check and say equal or not. 
+// 2.Given two strings, write a code to compare two strings to check and say equal or not. 
 import java.util.*;
 class Main{
   public static void main(String[] args)
@@ -34,7 +35,7 @@ class Main{
 }
 
 
-3.Write a program to implement strupr function.
+// 3.Write a program to implement strupr function.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -43,7 +44,8 @@ class main{
     System.out.print(d.toUpperCase());}}
 
 
-4.Given number of elements , array and K value, Find the minimum number of Swaps required to get elements less then K and  greater elements on the right  side.
+
+// 4.Given number of elements , array and K value, Find the minimum number of Swaps required to get elements less then K and  greater elements on the right  side.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -76,7 +78,7 @@ class main{
 }
 
 
-5.Write a program to check whether the given array of elements are in a Monotonic order or Not.
+// 5.Write a program to check whether the given array of elements are in a Monotonic order or Not.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -115,7 +117,7 @@ class main{
 }
 
 
-6.Write a program to check whether the given array of elements are in a Bitonic order or Not.
+// 6.Write a program to check whether the given array of elements are in a Bitonic order or Not.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -144,7 +146,7 @@ class main{
   }}
 
 
-7.Write a program to reverse a string except the special characters.
+// 7.Write a program to reverse a string except the special characters.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -169,7 +171,7 @@ class main{
 }
 
 
-8.Write a program to convert the digits in the string into a single number.
+// 8.Write a program to convert the digits in the string into a single number.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -186,7 +188,7 @@ class main{
 
 
 
-9.Write a program to print the values from 1 to n except multiples of 4. 
+// 9.Write a program to print the values from 1 to n except multiples of 4. 
 Use continue statement to skip 4.
 import java.util.*;
 class main{
@@ -202,7 +204,7 @@ class main{
   }}
 
 
-10.Accept an integer N and generate the first N terms of the fibonacci series.
+// 10.Accept an integer N and generate the first N terms of the fibonacci series.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -217,7 +219,7 @@ class main{
     }}}
 
 
-11.Check whether the given number is a triangular number.
+// 11.Check whether the given number is a triangular number.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -236,7 +238,7 @@ class main{
 }
 
 
-12.Complete the function second_half_reverse(). Function will recieve a starting of address of a linked list . Do reverse the second half of the given singly linked list.
+// 12.Complete the function second_half_reverse(). Function will recieve a starting of address of a linked list . Do reverse the second half of the given singly linked list.
 import java.util.*;
 class sll{
   Node head;
@@ -321,7 +323,7 @@ f=f.next;
 }
 
 
-13.Complete the function find_mid_point(). Function will recieve a starting of address of a linked list. Do find the midpoint of the given singly linked list and return it.
+// 13.Complete the function find_mid_point(). Function will recieve a starting of address of a linked list. Do find the midpoint of the given singly linked list and return it.
 import java.util.*;
 class sll{
   Node head;
@@ -375,7 +377,7 @@ class sll{
   }}
 
 
-14.Complete the function kth_last_node(). Function will recieve a starting of address of a linked list and a k value. Do find the kth value from the last fo the given singly linked list and return it.
+// 14.Complete the function kth_last_node(). Function will recieve a starting of address of a linked list and a k value. Do find the kth value from the last fo the given singly linked list and return it.
 import java.util.*;
 class sll{
   Node head;
@@ -431,3 +433,77 @@ class sll{
     list.rev(p);
   }
 }
+
+
+
+// 15.Anagram for 2 numbers. Two numbers are said to be an anagram if both numbers are formed with the same digits.
+import java.util.*;
+class anagram{
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+    String n1 = s.nextLine();
+    String n2 = s.nextLine();
+    char[] arr1 = n1.toCharArray();
+    char[] arr2 = n2.toCharArray();
+    Arrays.sort(arr1);
+    Arrays.sort(arr2);
+    if(Arrays.equals(arr1,arr2)){
+      System.out.println("Anagram");
+    }
+    else{
+      System.out.println("Not");
+    }
+  }
+}
+
+
+
+// 16.A magic number is a number where the multiplication of the sum of digits and the sum reverse equals the same number.
+import java.util.*;
+class main{
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+    int n = s.nextInt();
+    int sum = 0;
+    int temp = n;
+    while(temp>0){
+      sum += temp%10;
+      temp /= 10;
+    }
+    int rev = 0;
+    temp = sum;
+    while(temp>0){
+      rev = rev * 10 + temp%10;
+      temp /= 10;
+    }
+    if(sum * rev == n){
+      System.out.println("YES");
+    }else{
+      System.out.println("NO"); 
+    }
+  }
+}
+
+
+
+// 17.Find the frequency of each digit from the given number.
+import java.util.*;
+class main{
+  public static void  main(String[] args){
+    Scanner n=new Scanner(System.in);
+    long h=n.nextLong();
+    long arr[]=new long[10];
+    long u=0;int r=0;
+    while(h!=0){
+      u=h%10;
+      r=(int)u;
+    arr[r]++;
+      h=h/10;
+  }
+  for(int j=0;j<10;j++){
+    System.out.println(j+" occurs "+arr[j]+" times ");
+  }
+}
+}
+
+
