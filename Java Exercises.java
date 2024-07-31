@@ -505,7 +505,7 @@ class main{
 }
 }
 
-//17.Anagram for 2 numbers. Two numbers are said to be an anagram if both numbers are formed with the same digits.
+//18.Anagram for 2 numbers. Two numbers are said to be an anagram if both numbers are formed with the same digits.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -524,7 +524,7 @@ class main{
 }
 
 
-//18.Check whether the number is a magic number. A magic number is a number where the multiplication of the sum of digits and the sum reverse equals the same number. For example, consider n=1729
+//19.Check whether the number is a magic number. A magic number is a number where the multiplication of the sum of digits and the sum reverse equals the same number. For example, consider n=1729
 //sum of digits = (1 + 7 + 2 + 9 => 19)
 //The reverse of 19 is 91
 //(19 X 91 = 1729)
