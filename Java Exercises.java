@@ -562,3 +562,29 @@ class main{
 }
 
 
+/* 20). "R-r-riddikulus"  used in the movie Harry Potter to transform anything from one form to other, Similarly you have to transform the array by rotation.
+A left rotation operation on an array shifts each of the array's elements 1 unit to the left. For example, if 2  left rotations are performed on array [1,2,3,4,5], then the array would become [3,4,5,1,2].
+Given an array a of n integers and a number, d, perform d left rotations on the array. Return the updated array to be printed as a single line of space-separated integers.*/
+  
+import java.util.*;
+class main{
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+    int n = s.nextInt();
+    int m = s.nextInt();
+    int[] arr = new int[n];
+    for(int i=0;i<n;i++){
+      arr[i]=s.nextInt();
+    }
+    if(m==n){
+      for(int i=0;i<n;i++)
+      System.out.print(arr[i]+" ");
+    }else{
+      for(int i=m;i<n;i++){
+        System.out.print(arr[i]+" ");
+      }
+      for(int i=0;i<m;i++)
+       System.out.print(arr[i]+" ");
+    }}}
+
+
