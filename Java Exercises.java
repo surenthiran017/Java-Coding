@@ -588,6 +588,8 @@ class main{
     }}}
 
 
+
+
 /*  21).Binary Search Tree*/
 import java.util.*;
 class Node{
