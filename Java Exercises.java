@@ -505,7 +505,7 @@ class main{
 }
 }
 
-//18.Anagram for 2 numbers. Two numbers are said to be an anagram if both numbers are formed with the same digits.
+// 18.Anagram for 2 numbers. Two numbers are said to be an anagram if both numbers are formed with the same digits.
 import java.util.*;
 class main{
   public static void main(String[] args){
@@ -524,7 +524,7 @@ class main{
 }
 
 
-//19.Check whether the number is a magic number. A magic number is a number where the multiplication of the sum of digits and the sum reverse equals the same number. For example, consider n=1729
+//  19.Check whether the number is a magic number. A magic number is a number where the multiplication of the sum of digits and the sum reverse equals the same number. For example, consider n=1729
 //sum of digits = (1 + 7 + 2 + 9 => 19)
 //The reverse of 19 is 91
 //(19 X 91 = 1729)
@@ -562,9 +562,9 @@ class main{
 }
 
 
-/* 20). "R-r-riddikulus"  used in the movie Harry Potter to transform anything from one form to other, Similarly you have to transform the array by rotation.
+/*   20). "R-r-riddikulus"  used in the movie Harry Potter to transform anything from one form to other, Similarly you have to transform the array by rotation.
 A left rotation operation on an array shifts each of the array's elements 1 unit to the left. For example, if 2  left rotations are performed on array [1,2,3,4,5], then the array would become [3,4,5,1,2].
-Given an array a of n integers and a number, d, perform d left rotations on the array. Return the updated array to be printed as a single line of space-separated integers.*/
+Given an array a of n integers and a number, d, perform d left rotations on the array. Return the updated array to be printed as a single line of space-separated integers.  */
   
 import java.util.*;
 class main{
@@ -586,5 +586,127 @@ class main{
       for(int i=0;i<m;i++)
        System.out.print(arr[i]+" ");
     }}}
+
+
+/*  21).Binary Search Tree*/
+import java.util.*;
+class Node{
+    int data;
+    Node left,right;
+
+    public Node (int val){
+        data = val;
+        left = right= null;
+    }
+}
+class bst{
+    Node create(int data){
+        return new Node(data);
+    }
+    Node insert(Node root,int val){
+        if(root == null){
+            return create(val);
+        }
+        if(val < root.data){
+            root.left = insert(root.left, val);
+        }
+        else{
+            root.right = insert(root.right, val);
+        }
+        return root;
+    }
+    public void preorder(Node root){
+        if(root != null){
+            System.out.print(root.data+ " ");
+            preorder(root.left);
+            preorder(root.right);
+        }
+    }
+    public void inorder(Node root){
+        if(root != null){
+            preorder(root.left);
+            System.out.print(root.data+ " ");
+            preorder(root.right);
+        }
+    }
+    public void postorder(Node root){
+        if(root != null){
+            preorder(root.left);
+            preorder(root.right);
+            System.out.print(root.data+ " ");
+        }
+    }
+    public void levelorder(Node root){
+        if(root==null){
+            System.out.println("Tree is empty");
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            Node cur = queue.poll();
+            System.out.print(cur.data+" ");
+            if(cur.left!=null){
+                queue.add(cur.left);
+            }
+            if(cur.right!=null){
+                queue.add(cur.right);
+            }
+        }
+    }
+    public  boolean search(Node root,int key) {
+        if (root == null) {
+            return false;
+        }
+        if (key == root.data) {
+            return true;
+        }
+        if (key < root.data) {
+            return search(root.left, key);
+        } else {
+            return search(root.right, key);
+        }
+    }
+    public int height(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(height(root.left), height(root.right))+1;
+    }
+    public static void main(String[] args){
+        Scanner s = new Scanner(System.in);
+        bst t1 = new bst();
+        int n = s.nextInt();
+        Node root = t1.create(n);
+        while (true){
+            int val = s.nextInt();
+            if(val == -1){
+                break;
+            }
+            t1.insert(root,val);
+        }
+        System.out.println("prerorder");
+        t1.preorder(root);
+        System.out.println();
+        System.out.println("inorder");
+        t1.inorder(root);
+        System.out.println();
+        System.out.println("postorder");
+        t1.postorder(root);
+        System.out.println();
+        System.out.println("levelorder");
+        t1.levelorder(root);
+        System.out.println();
+        System.out.println("Search element");
+        int key = s.nextInt();
+        boolean a = t1.search(root,key);
+        if(a)
+            System.out.println(key+" is found");
+        else
+            System.out.println("is Not found");
+        System.out.print("Height - ");
+        int h = t1.height(root);
+        System.out.print(h-1);
+}
+}
 
 
