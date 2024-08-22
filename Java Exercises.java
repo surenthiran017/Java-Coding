@@ -712,3 +712,306 @@ class bst{
 }
 
 
+
+/* 22).Breadth first search */
+import java.util.ArrayList;
+import java.util.*;
+class breadth{
+    ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+    breadth(int v){
+        for(int i =0;i<v;i++){
+            list.add(new ArrayList<>());
+        }
+    }
+    public void push(int u , int v){
+        list.get(u).add(v);
+        list.get(v).add(u);
+    }
+    public void bfs(int v){
+        int n = list.size();
+        boolean [] visited = new boolean[n];
+        visited[v] = true;
+        Queue<Integer> q = new LinkedList<>();
+        q.add(v);
+        while(q.size()!=0){
+            int m = q.remove();
+            System.out.print(m+ " ");
+            for(int i =0;i<list.get(m).size();i++){
+                int k = list.get(m).get(i);
+                if(!visited[k]){
+                    q.add(k);
+                    visited[k] = true;
+                }
+            }
+}
+    }
+    public void display(){
+        for(int i =0;i<list.size();i++){
+            System.out.print("Vertices:"+ i+" ");
+            for(int j = 0;j<list.get(i).size();j++){
+                System.out.print(list.get(i).get(j)+" ");
+            }
+            System.out.println(" ");
+        }
+    }
+    public static void main (String[] args){
+        Scanner s = new Scanner(System.in);
+        int v = s.nextInt();
+        breadth g = new breadth(v+1);
+        while(true){
+            int a = s.nextInt();
+            int b = s.nextInt();
+            if(a==-1||b==-1)
+                break;
+            g.push(a,b);
+        }
+        g.display();
+        System.out.println("BFS");
+        g.bfs(0);
+    }
+}
+
+/* 23).Depth first search */
+
+import java.util.ArrayList;
+import java.util.*;
+class depth{
+    ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+    depth(int v){
+        for(int i =0;i<v;i++){
+            list.add(new ArrayList<>());
+        }
+    }
+    public void push(int u , int v){
+        list.get(u).add(v);
+        list.get(v).add(u);
+    }
+    public void dfs(int v){
+        int l = list.size();
+        boolean [] arr = new boolean[l];
+        dfs1(v,arr);
+    }
+    public void dfs1(int v, boolean [] arr){
+        System.out.println(v+" ");
+        arr[v] = true;
+
+        for(int i=0;i<list.get(v).size();i++){
+            int k = list.get(v).get(i);
+            if(!arr[k]){
+                dfs1(k,arr);
+            }
+        }
+    }
+    public void display(){
+        for(int i =0;i<list.size();i++){
+            System.out.print("Vertices:"+ i+" ");
+            for(int j = 0;j<list.get(i).size();j++){
+                System.out.print(list.get(i).get(j)+" ");
+            }
+            System.out.println(" ");
+        }
+    }
+    public static void main (String[] args){
+        Scanner s = new Scanner(System.in);
+        int v = s.nextInt();
+        depth g = new depth(v+1);
+        while(true){
+            int a = s.nextInt();
+            int b = s.nextInt();
+            if(a==-1||b==-1)
+                break;
+            g.push(a,b);
+        }
+        g.dfs(3);
+        g.display();
+    }
+}
+
+
+
+/* 24).AVL tree */
+import java.util.*;
+class TreeNode {
+    int data, height;
+    TreeNode left, right;
+
+    public TreeNode(int val) {
+        data = val;
+        left = right = null;
+        height = 1;
+    }
+}
+    class avl {
+        TreeNode create(int data) {
+            return new TreeNode(data);
+        }
+        int height(TreeNode n) {
+            if (n == null)
+                return 0;
+            return n.height;
+        }
+        int getBalance(TreeNode n) {
+            if (n == null)
+                return 0;
+            return height(n.left) - height(n.right);
+        }
+        TreeNode rightRotate(TreeNode y) {
+            TreeNode x = y.left;
+            TreeNode z = x.right;
+            x.right = y;
+            y.left = z;
+            y.height = Math.max(height(y.left), height(y.right)) + 1;
+            x.height = Math.max(height(x.left), height(x.right)) + 1;
+            return x;
+        }
+        TreeNode leftRotate(TreeNode x) {
+            TreeNode y = x.right;
+            TreeNode z = y.left;
+            y.left = x;
+            x.right = z;
+            x.height = Math.max(height(x.left), height(x.right)) + 1;
+            y.height = Math.max(height(y.left), height(y.right)) + 1;
+            return y;
+        }
+        TreeNode insert(TreeNode root, int val) {
+            if (root == null) {
+                return create(val);
+            }
+            if (val < root.data) {
+                root.left = insert(root.left, val);
+            } else if (val > root.data) {
+                root.right = insert(root.right, val);
+            } else {
+                return root;
+            }
+            root.height = 1 + Math.max(height(root.left), height(root.right));
+            int balance = getBalance(root);
+            // Left Left
+            if (balance > 1 && val < root.left.data)
+                return rightRotate(root);
+
+            // Right Right
+            if (balance < -1 && val > root.right.data)
+                return leftRotate(root);
+
+            // Left Right
+            if (balance > 1 && val > root.left.data) {
+                root.left = leftRotate(root.left);
+                return rightRotate(root);
+            }
+            // Right Left
+            if (balance < -1 && val < root.right.data) {
+                root.right = rightRotate(root.right);
+                return leftRotate(root);
+            }
+            return root;
+        }
+        void preOrder(TreeNode root) {
+            if (root != null) {
+                System.out.print(root.data + " ");
+                preOrder(root.left);
+                preOrder(root.right);
+            }
+        }
+        void postOrder(TreeNode root) {
+            if (root != null) {
+                preOrder(root.left);
+                preOrder(root.right);
+                System.out.print(root.data + " ");
+            }
+        }
+        public void levelorder(TreeNode root){
+            if(root==null){
+                System.out.println("Tree is empty");
+            }
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.add(root);
+            while(!queue.isEmpty()){
+                TreeNode cur = queue.poll();
+                System.out.print(cur.data+" ");
+                if(cur.left!=null){
+                    queue.add(cur.left);
+                }
+                if(cur.right!=null){
+                    queue.add(cur.right);
+                }
+            }
+        }
+        public int leafcount(TreeNode root){
+            if(root==null)
+                return 0;
+            if(root.left==null && root.right==null)
+                return 1;
+            return leafcount(root.left) + leafcount(root.right);
+        }
+        public static void main(String[] args) {
+            Scanner s = new Scanner(System.in);
+            avl tree = new avl();
+            int n = s.nextInt();
+            TreeNode root = tree.create(n);
+            while (true) {
+                int a = s.nextInt();
+                if (a == -1) {
+                    break;
+                }
+                root = tree.insert(root,a);
+            }
+            tree.preOrder(root);
+            System.out.println();
+            tree.postOrder(root);
+            System.out.println();
+            System.out.println("level order ");
+            tree.levelorder(root);
+            System.out.println();
+            int e = tree.leafcount(root);
+            System.out.print("leafcount is "+e);
+        }
+    }
+
+
+
+/* 25).Graph */
+
+import java.util.ArrayList;
+import java.util.*;
+class Graph{
+    ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+
+    Graph(int v){
+        for(int i =0;i<v;i++){
+            list.add(new ArrayList<Integer>());
+        }
+    }
+    public void push(int u , int v){
+        list.get(u).add(v);
+        list.get(v).add(u);
+    }
+    public void display(){
+        for(int i =0;i<list.size();i++){
+            System.out.print("Vertices:"+ i+" ");
+            for(int j = 0;j<list.get(i).size();j++){
+                System.out.print(list.get(i).get(j)+" ");
+            }
+            System.out.println(" ");
+        }
+    }
+
+    public static void main (String args[]){
+        Scanner s = new Scanner(System.in);
+        int v = s.nextInt();
+        Graph g = new Graph(v);
+        while(true){
+            int a = s.nextInt();
+            int b = s.nextInt();
+            if(a==-1||b==-1)
+                break;
+            g.push(a,b);
+        }
+        g.display();
+    }
+}
+
+
+
