@@ -638,4 +638,85 @@ public class vector {
 }
 
 
-//* Write a program to count the number of sorted rows in a matrix
+// 22).Write a program to count the number of sorted rows in a matrix
+
+import java.util.*;
+class main{
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+    int a = s.nextInt();
+    int b = s.nextInt();
+    int c;
+    int arr[][] = new int[a][b];
+    int count = 0;
+    for(int i=0;i<a;i++){
+      for(int j=0;j<b;j++){
+        arr[i][j] = s.nextInt();
+      }
+  }
+  for(int i=0;i<a;i++){
+    if(arr[i][0]>arr[i][1])
+    c=1;
+    else
+    c=0;
+    int d=0;
+    for(int j=0;j<b-1;j++){
+      if(c==0&&arr[i][j]>arr[i][j+1])
+      d=1;
+      else if(c==1&&arr[i][j]<arr[i][j+1])
+      d=1;
+    }
+    if(d==0)
+    count++;
+  }
+  System.out.println(count);
+}
+}
+
+
+  23). /* Check whether given number is Pentagonal number A Pentagonal number is a number 
+that can be represented using a regular geometric pattern typically formed using 
+dots that are regularly spaced. A pentagonal number takes the form of a pentagon. 
+The first 6 pentagonal numbers are: 1, 5, 12, 22, 35, 51,.etc */ 
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        int var1, power, var2;
+
+        if (num == 1 || num == 5) {
+            System.out.println("Pentagonal Number");
+        } else {
+            for (var1 = 4, var2 = 5; var2 < num; var1 += 3, var2 += var1);
+            if (var2 == num) {
+                System.out.println("Pentagonal Number");
+            } else {
+                System.out.println("Not a Pentagonal Number");
+            }
+        }
+    }
+}
+
+
+  24). /* For the given N , generate a N values of a series where the odd terms are multiples of 2 and even 
+terms are obtained by dividing previous term by 2.*/
+
+import java.util.*;
+class main{
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+    int n = s.nextInt();
+    int a=0,b=0;
+    for(int i=0;i<n;i++){
+      if(i%2==0){
+      System.out.print(a+" ");
+      a=a+2;
+    }else{
+      System.out.print(b++ +" ");
+    }
+  }
+}
+}
