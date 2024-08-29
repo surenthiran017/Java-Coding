@@ -564,8 +564,9 @@ class main{
 
 
 /*   20). "R-r-riddikulus"  used in the movie Harry Potter to transform anything from one form to other, Similarly you have to transform the array by rotation.
-A left rotation operation on an array shifts each of the array's elements 1 unit to the left. For example, if 2  left rotations are performed on array [1,2,3,4,5], then the array would become [3,4,5,1,2].
-Given an array a of n integers and a number, d, perform d left rotations on the array. Return the updated array to be printed as a single line of space-separated integers.  */
+A left rotation operation on an array shifts each of the array's elements 1 unit to the left. For example, if 2  left rotations are performed on array [1,2,3,4,5], 
+then the array would become [3,4,5,1,2].
+Given an array a of n integers and a number, d, perform d left rotations on the array. Return the updated array to be printed as a single line of space-separated integers. */
   
 import java.util.*;
 class main{
@@ -638,7 +639,7 @@ public class vector {
 }
 
 
-// 22).Write a program to count the number of sorted rows in a matrix
+// 23).Write a program to count the number of sorted rows in a matrix
 
 import java.util.*;
 class main{
@@ -674,7 +675,7 @@ class main{
 }
 
 
-  23). /* Check whether given number is Pentagonal number A Pentagonal number is a number 
+  24). /* Check whether given number is Pentagonal number A Pentagonal number is a number 
 that can be represented using a regular geometric pattern typically formed using 
 dots that are regularly spaced. A pentagonal number takes the form of a pentagon. 
 The first 6 pentagonal numbers are: 1, 5, 12, 22, 35, 51,.etc */ 
@@ -701,7 +702,7 @@ public class Main {
 }
 
 
-  24). /* For the given N , generate a N values of a series where the odd terms are multiples of 2 and even 
+  25). /* For the given N , generate a N values of a series where the odd terms are multiples of 2 and even 
 terms are obtained by dividing previous term by 2.*/
 
 import java.util.*;
@@ -720,3 +721,88 @@ class main{
   }
 }
 }
+
+
+
+
+
+26). /* Product of numbers You are given a function, 
+Int* ProductArray(int* arr,int n);
+The function accepts an integer array ‘arr’ of length ‘n’. 
+Implement the function to modify the given array such that,
+value at present in the array,in that array have to return products of all integers except at index.
+Assumption:
+Array Index starts from 0.
+n>1 
+Each product operation is within the integer range.
+Note:
+Input and output arrays are of same length. */
+
+
+import java.util.*;
+class main{
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+    int n =  s.nextInt();
+    int arr[] = new int[n];
+    for(int i=0;i<n;i++){
+      arr[i]=s.nextInt();
+    }
+  int temp=1;
+    for(int i=0;i<n;i++){
+      for(int j=0;j<n;j++){
+        if(j!=i)
+        temp=temp*arr[j];
+    }
+    System.out.print(temp+" ");
+    temp=1;
+  }
+}
+}
+
+
+
+
+
+
+27).  /* Repeating Digits Implement the following function 
+Int CommonDigit(int a,int b,int c);
+The function accepts three positive integers ‘a’,’b’, and ‘c’ as its argument. 
+implement the function to find the repeating digit in all the three input numbers. if there is no common digit ,then return -1.
+Assumption:
+All 3 numbers are three digit numbers.
+All 3 numbers can have at most 1 digit common.*/ 
+
+import java.util.*;
+class main{
+  public static int[] getDigitsArray(int a){
+    int arr[] = new int[3];
+    int h=0,i=2;
+    while(a!=0){
+      h=a%10;
+      arr[i--]=h;
+      a=a/10;
+    }
+    return arr;
+  }
+  public static void main(String[] args){
+    Scanner s= new Scanner(System.in);
+    int a = s.nextInt();
+    int b = s.nextInt();
+    int c = s.nextInt();
+    int arr1[] = getDigitsArray(a);
+    int arr2[] = getDigitsArray(b);
+    int arr3[] = getDigitsArray(c);
+    int m=-1;
+    for(int i=0;i<arr1.length;i++){
+      for(int j=0;j<arr2.length;j++){
+        for(int k=0;k<arr3.length;k++){
+          if(arr1[i]==arr2[j]&&arr2[j]==arr3[k])
+          m=arr1[i];
+    }
+  }
+}
+System.out.print(m);
+}
+}
+
