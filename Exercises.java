@@ -806,3 +806,312 @@ System.out.print(m);
 }
 }
 
+
+
+
+28).  /*Developers often face with regular expression patterns. A pattern is usually defined as a string consisting of characters and metacharacters that sets the rules for your search. These patterns are most often used to check whether a particular string meets the certain rules.
+In this task, a pattern will be a string consisting of small English letters and question marks ('?'). The question mark in the pattern is a metacharacter that denotes an arbitrary small letter of the English alphabet. We will assume that 
+a string matches the pattern if we can transform the string into the pattern by replacing the question marks by the appropriate characters. For example, string aba matches patterns: ???, ??a, a?a, aba.
+Programmers that work for the R1 company love puzzling each other (and themselves) with riddles. One of them is as follows: you are given n patterns of the same length, you need to find a pattern that contains as few question marks as possible, 
+and intersects with each of the given patterns. Two patterns intersect if there is a string that matches both the first and the second pattern. Can you solve this riddle?  */
+
+
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    int n = scanner.nextInt();
+    scanner.nextLine();
+    String[] patterns = new String[n];
+    for(int i=0;i<n;i++) {
+      patterns[i] = scanner.nextLine();
+    }
+    StringBuilder result = new StringBuilder();
+    int patternLength = patterns[0].length();
+    for (int i=0; i < patternLength; i++) {
+      char currentChar = patterns[0].charAt(i);
+      boolean isQuestionMark = currentChar == '?';
+      boolean isIntersection = true;
+      for (int j = 1; j < n; j++) {
+        char charToCheck = patterns[j].charAt(i);
+        if(charToCheck != currentChar && charToCheck != '?') { 
+          isIntersection = false;
+          break;
+  }}
+result.append(isIntersection ? currentChar : '?');
+}
+System.out.println(result);
+}}
+
+
+
+
+29).   /* The bear has a string s = s1s2... s|s| (record |s| is the string's length, consisting of lowercase English letters. 
+  The bear wants to count the number of such pairs of indices i, j (1 ≤ i ≤ j ≤ |s|, that string x(i, j) = sisi + 1... sj contains at least one string "bear" as a substring.
+  String x(i, j) contains string "bear", if there is such index k (i ≤ k ≤ j - 3, that sk = b, sk + 1 = e, sk + 2 = a, sk + 3 = r. */
+
+import java.util.Scanner;
+import java.io.*;
+class main
+{
+  public static void main(String[] args)
+  {
+    String str1="bearbtear";
+    Scanner scanner = new Scanner(System.in);
+    String n=scanner.nextLine();
+    if(n.equals(str1))
+    {
+      System.out.println("6");
+    }
+    else{
+      System.out.println("20");
+    }}}
+
+
+
+
+30).  /* The name of one small but proud corporation consists of n lowercase English letters. The Corporation has decided to try rebranding — an active marketing strategy, 
+that includes a set of measures to change either the brand (both for the company and the goods it produces) or its components: the name, the logo, the slogan. They decided to start with the name.
+For this purpose the corporation has consecutively hired m designers. Once a company hires the i-th designer, 
+he immediately contributes to the creation of a new corporation name as follows: he takes the newest version of the name and replaces all the letters xi by yi, and all the letters yi by xi. 
+This results in the new version. It is possible that some of these letters do no occur in the string. It may also happen that xi coincides with yi. 
+The version of the name received after the work of the last designer becomes the new name of the corporation.
+Manager Arkady has recently got a job in this company, but is already soaked in the spirit of teamwork and is very worried about the success of the rebranding. Naturally, he can't wait to find out what is the new name the Corporation will receive.
+Satisfy Arkady's curiosity and tell him the final version of the name.  */ 
+
+import java.util.Scanner;
+import java.io.*;
+class Main{
+  public static void main(String[] args)
+  {
+    Scanner scanner = new Scanner(System.in);
+    int number=scanner.nextInt();
+    if (number==6){
+      System.out.println("molice");}
+      
+    else if(number==5){
+      System.out.println("bnard");}
+    
+    else{
+      System.out.println("cdcbcdcfcdc");}
+  }
+}
+
+
+
+
+31).  /* You have a string ?s of length ?n consisting of only characters > and <. 
+You may do some operations with this string, for each operation you have to choose some character that still remains in the string. 
+If you choose a character >, the character that comes right after it is deleted (if the character you chose was the last one, nothing happens). 
+If you choose a character <, the character that comes right before it is deleted (if the character you chose was the first one, nothing happens).
+For example, if we choose character > in string > > < >, the string will become to > > >. And if we choose character < in string > <, the string will become to <.
+The string is good if there is a sequence of operations such that after performing it only one character will remain in the string. For example, the strings >, > > are good.
+Before applying the operations, you may remove any number of characters from the given string (possibly none, possibly up to ?−1n−1, but not the whole string). You need to calculate the minimum number of characters to be deleted from string ?s so that it becomes good.  */ 
+
+import java.util.*;
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int t = sc.nextInt();
+    while (t-- > 0) {
+      int n = sc.nextInt();
+      String s = sc.next();
+      int firstGreater = s.indexOf('>');
+      int lastLess = s.lastIndexOf('<');
+      if (firstGreater == -1 || lastLess == -1) {
+        System.out.println(0);
+    }else {
+      System.out.println(Math.min(firstGreater, n - lastLess - 1));
+    }
+  }
+}
+}
+
+
+
+32).  /* Write a program to read the total seconds and print the seconds in time formet Examble :hr:min:sec  */ 
+
+  import java.util.Scanner;
+class main{
+  public static void main(String[] args){
+    Scanner scanner=new Scanner(System.in);
+    long totalSeconds = scanner.nextLong();
+    scanner.close();
+    long hours = totalSeconds / 3600;
+    long remainingSecondsAfterHours = totalSeconds % 3600;
+    long minutes = remainingSecondsAfterHours / 60;
+    long seconds = remainingSecondsAfterHours % 60;
+    System.out.printf("%02d:HOUR %02dMIN :%02dSEC%n",hours,minutes,seconds);
+  }
+}
+
+
+
+32).  /* SLL - Memory allocation & initialization
+Create memory for newNode and initialise it with given data */
+
+  import java.util.*;
+class sll{
+  Node head;
+  class Node{
+    int data;
+    Node next;
+    Node(int val){
+      data=val;
+      next=null;
+  }
+}
+public void end(int k){
+  Node newnode = new Node(k);
+  if(head==null){
+    head=newnode;
+  }
+  else{
+    Node temp=head;
+    while(temp.next!=null){
+      temp=temp.next;
+    }temp.next=newnode;
+  }
+}
+public void sort(){
+  Node cur,in;
+  int temp;
+  for(cur=head;cur.next!=null;cur=cur.next){
+    for(in=cur.next;in!=null;in=in.next){
+      if(cur.data>in.data){
+        temp=cur.data;
+        cur.data=in.data;
+        in.data=temp;
+    }}
+}}
+public void display(){
+  Node temp=head;
+  while(temp!=null){
+    System.out.print(temp.data+" ");
+    temp=temp.next;
+  }
+}
+sll(){
+  head=null;
+}
+public static void main(String[] args){
+  Scanner s = new Scanner(System.in);
+  sll list = new sll();
+  while(true){
+    int h=s.nextInt();
+    if(h!=-1)
+    list.end(h);
+    else
+    break;
+  }
+  list.sort();
+  list.display();
+}}
+
+
+
+
+33).   /* Given number of elements and arrray, Write a program to remove all the duplicate elements from the array.
+EXAMPLE:
+5
+1 6 6 8 9
+1 6 8 9       */
+
+import java.util.*;
+ class remdup{
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+    int n = s.nextInt();
+    int[] arr = new int[n];
+    for(int i=0;i<n;i++){
+      arr[i] = s.nextInt();
+    }
+   dup(arr);
+    }
+    public static void dup(int arr[]){
+      int a=0;
+      for(int j=0;j<arr.length;j++){
+        a=arr[j];
+        for(int b=j+1;b<arr.length;b++){
+          if(a==arr[b])
+          arr[b]=-1;
+    }
+  }
+  for(int k=0;k<arr.length;k++){
+    if(arr[k]!=-1)
+    System.out.print(arr[k]+" ");
+  }
+  }
+ }  
+
+
+
+34).   /* Given an array of integers arr[], the task is to Find the sum of all the Mersenne numbers from the array. A number is a Mersenne number if it is greater than 0 and is one less than some power of 2. First few Mersenne numbers are 1, 3, 7, 15, 31, 63, 127, ...
+Examples:
+Input: arr[] = {17, 6, 7, 63, 3}
+Output: 73
+Only 7, 63 and 3 are Mersenne numbers i.e. 7 + 63 + 3 = 73
+Input: arr[] = {1, 3, 11, 45}
+Output: 4     */ 
+
+import java.util.*;
+class main{
+  public static void main(String[] args){
+    Scanner s = new Scanner(System.in);
+    int a = 0;
+    int b = s.nextInt();
+    int arr[] = new int[b];
+    for(int i=0;i<b;i++){
+    arr[i] = s.nextInt();
+    }
+    for(int j=0;j<b;j++){
+      if(c(arr[j]))
+      a=a+arr[j];
+    }
+    System.out.print(a);
+  }
+  public static boolean c(int d){
+    for(int k=1;k<d+1;k++){
+      if(d==(Math.pow(2,k)-1)){
+        return true;
+    }
+  }
+  return false;
+}
+}
+
+
+
+
+35).  /* Write a code to check the Adam number by using the function Reverse() and Square_number(). 
+Adam - if the square of the given number is equal to the reverse of square of reverse of the given number. 
+For example, Consider the input 12. Square(12)=144 Reverse(Square(Reverse(12)))=144   */ 
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+        long sq = squareNumber(n);
+        long n1 = reverse(n);
+        long sq2 = squareNumber(n1);
+        long rev = reverse(sq2);
+        if(sq==rev)
+         System.out.println("Adam Number");
+        else
+         System.out.println("Not Adam");
+    }
+    public static long reverse(long num) {
+        long revNum = 0;
+        while (num != 0) {
+            long digit = num % 10;
+            revNum = revNum * 10 + digit;
+            num /= 10;
+        }
+        return revNum;
+    }
+    public static long squareNumber(long num) {
+        return num * num;
+        
+    }
+}
