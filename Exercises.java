@@ -1115,3 +1115,147 @@ public class Main {
         
     }
 }
+
+
+
+36). /* Given a directed graph, find out if a vertex j is reachable from another vertex i
+for all vertex pairs (i, j) in the given graph. Here reachable mean that there is a
+path from vertex i to j. The reach-ability matrix is called the transitive closure
+of a graph.
+Transitive closure of above graphs is
+1 1 1 1
+1 1 1 1
+1 1 1 1
+0 0 0 1   */  
+
+import java.util.*;
+class Transitive{
+  public static void transclos(int[][] graph,int v){
+    int[][] reach=new int[v][v];
+    for(int i=0;i<v;i++){
+      for(int j=0;j<v;j++){
+        reach[i][j]=graph[i][j];
+    }
+  }
+  for(int k=0;k<v;k++){
+    for(int i=0;i<v;i++){
+      for(int j=0;j<v;j++){
+        reach[i][j]=reach[i][j]==1||(reach[i][k]==1 && reach[k][j]==1)?1:0;
+    }
+  }
+}
+for(int i=0;i<v;i++){
+  for(int j=0;j<v;j++){
+    System.out.print(reach[i][j]+" ");
+  }
+  System.out.println();
+}
+}
+public static void main(String[] args){
+  Scanner s = new Scanner(System.in);
+  int v = s.nextInt();
+  int[][] graph = new int[v][v];
+  for(int i=0;i<v;i++){
+    for(int j=0;j<v;j++){
+      graph[i][j]= s.nextInt();
+    }
+  }
+  transclos(graph,v);
+}
+}
+
+
+
+37).  /* Equi-Arrays are arrays of equal number of elements and every element in arr1 has an another element in arr2 that are made of same digits. 
+Write a program to check if two arrays are equi-arrays,print all the pairs.
+If no pairs found,print "No Pairs Found". Sample : {23, 561, 902, 189} {209, 165, 32, 981} 
+Are equi-arrays 23 matches with 32 561 matches with 165 902 matches with 209 189 matches with 981 
+Output : 0,2 1,1 2,0 3,3 */
+
+import java.util.*;
+ class main{
+   public static void main(String[] args){
+     Scanner s = new Scanner(System.in);
+     int n = s.nextInt();
+     int[] arr1 = new int[n];
+     int[] arr2 = new int[n];
+     for(int i=0;i<n;i++){
+       arr1[i] = s.nextInt();
+     }
+     for(int i=0;i<n;i++){
+       arr2[i]= s.nextInt();
+     }
+     Map<String,Integer> map = new HashMap<>();
+     for(int i=0;i<n;i++){
+       char[] chars = String.valueOf(arr2[i]).toCharArray();
+       Arrays.sort(chars);
+       map.put(String.valueOf(chars),i);
+     }
+     boolean found = false;
+     for(int i=0;i<n;i++){
+       char[] chars = String.valueOf(arr1[i]).toCharArray();
+       Arrays.sort(chars);
+       if(map.containsKey(String.valueOf(chars))){
+         System.out.print(i+"," +map.get(String.valueOf(chars))+" ");
+         found = true;
+     }
+   }
+   if(!found){
+     System.out.println("No Pairs Found");
+   }
+   }
+ }
+
+
+
+38).  /*Following is the mobile keyboard alignment - find out the number of key presses required to type a given message.     
+
+                                                                                    2                 3
+
+                                                                                    ABC              DEF                       
+
+                                                                            4                5                6                    
+
+                                                                         GHI               JKL               MNO                             
+
+                                                                            7              8                  9                    
+
+                                                                       PQRS               TUV               WXYZ                                        
+
+                                                                                            0                                     
+
+                                                                                         SPACE 
+ 
+Note : Input string will be made of UPPERCASE and Spaces
+ Example: Input : SRIDHAR 
+Output : 17
+ S-4, R-3,I-3,D-1,H-2,A-1,R-3    */ 
+
+import java.util.*;
+ class main{
+   public static void main(String[] args){
+     Scanner s = new Scanner(System.in);
+     String str = s.nextLine();
+     long count = 0;
+     for(int i=0;i<str.length();i++){
+       char c=str.charAt(i);
+       if(c=='A'||c=='D'||c=='G'||c=='J'||c=='M'||c=='P'||c=='T'||c=='W')
+       count+=1;
+       else if(c=='B'||c=='E'||c=='H'||c=='K'||c=='Q'||c=='U'||c=='X'||c=='N')
+       count+=2;
+       else if(c=='C'||c=='F'||c=='I'||c=='L'||c=='O'||c=='R'||c=='V'||c=='Y')
+       count+=3;
+       else if(c=='S'||c=='Z')
+       count+=4;
+     }
+     System.out.println(count);
+   }
+ }
+
+
+
+
+
+
+
+
